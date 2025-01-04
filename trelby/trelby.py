@@ -302,6 +302,10 @@ class MyCtrl(wx.Control):
         # display the first page
         self.makeLineVisible(self.sp.line)
 
+        from trelby.cfgdlg import IsProductionOn
+        if (IsProductionOn == False):
+            wx.MessageBox("Production Mode Is Not On")
+
     # save script to given filename. returns True on success.
     def saveFile(self, fileName):
         fileName = str(util.ensureEndsIn(fileName, ".trelby"))

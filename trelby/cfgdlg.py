@@ -13,6 +13,8 @@ import trelby.util as util
 # stupid hack to get correct window modality stacking for dialogs
 cfgFrame = None
 
+# Is production mode enabled right now?
+IsProductionOn = False
 
 # WX2.6-FIXME: we can delete this when/if we switch to using wxListBook in
 # wxWidgets 2.6

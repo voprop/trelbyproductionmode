@@ -113,7 +113,7 @@ class CfgDlg(wx.Dialog):
             self.AddPage(PDFPanel, "PDF")
             self.AddPage(PDFFontsPanel, "PDF/Fonts")
             self.AddPage(StringsPanel, "Strings")
-            self.AddPage(ProductionMode, "Production")
+
 
         size = self.listbook.GetContainingSize()
 
@@ -1412,25 +1412,7 @@ class ElementsGlobalPanel(wx.Panel):
         util.reverseComboSelect(self.newTabCombo, tcfg.newTypeTab)
         util.reverseComboSelect(self.nextTabCombo, tcfg.nextTypeTab)
         util.reverseComboSelect(self.prevTabCombo, tcfg.prevTypeTab)
-
-class ProductionMode(wx.Panel):
-    def __init__(self, parent, id, cfg):
-        wx.Panel.__init__(self, parent, id)
-        self.cfg = cfg
-
-        vsizer = wx.BoxSizer(wx.VERTICAL)
-
-        vsizer.Add(wx.StaticText(
-            self, -1,
-            "Production mode lets you do more advanced formatting like revision \n"
-            "marks to track changes or locking a page/scene.\n"
-            "It operates similar to unix patch(1) where it loads it from a \n"
-            "separate file.\n"
-            "and on the fly makes the changes without touching the main file.\n"
-            "\n"
-            "Note that the file tracking production mode changes\n"
-            "MUST be in the same directory as where your .trelby file is\n\n"))
-
+   
 class StringsPanel(wx.Panel):
     def __init__(self, parent, id, cfg):
         wx.Panel.__init__(self, parent, id)

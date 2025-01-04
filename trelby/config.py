@@ -502,6 +502,9 @@ class Config:
         # whether to show PDF TOC by default
         v.addBool("pdfShowTOC", True, "ShowTOC")
 
+        # Are we currently in production mode?
+        v.addBool("ProductionMode", False, "EnableProductionMode")
+
         # whether to open PDF document on current page
         v.addBool("pdfOpenOnCurrentPage", True, "OpenOnCurrentPage")
 

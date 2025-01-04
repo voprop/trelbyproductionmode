@@ -39,6 +39,7 @@ import trelby.util as util
 import trelby.viewmode as viewmode
 import trelby.watermarkdlg as watermarkdlg
 from trelby.error import TrelbyError
+import trelby.production as production
 
 # Boolean to determine if toolbar should be shown or not.
 toolbarshown = True
@@ -680,6 +681,10 @@ class MyCtrl(wx.Control):
             self.sp.markChanged()
 
         dlg.Destroy()
+
+    def OnProductionModeDlg(self):
+        production.MessageMe()
+        
 
     def OnHeadersDlg(self):
         dlg = headersdlg.HeadersDlg(
@@ -1827,6 +1832,7 @@ class MyFrame(wx.Frame):
         scriptMenu.Append(ID_SCRIPT_LOCATIONS, "&Locations...")
         scriptMenu.Append(ID_SCRIPT_TITLES, "&Title pages...")
         scriptMenu.Append(ID_SCRIPT_SC_DICT, "&Spell checker dictionary...")
+        scriptMenu.Append(ID_SCRIPT_PRODUCTION_MODE, "&Production Mode")
         scriptMenu.AppendSeparator()
 
         tmp = wx.Menu()
@@ -2014,6 +2020,7 @@ class MyFrame(wx.Frame):
             self.Bind(wx.EVT_MENU, self.OnHeadersDlg, id=ID_SCRIPT_HEADERS)
             self.Bind(wx.EVT_MENU, self.OnLocationsDlg, id=ID_SCRIPT_LOCATIONS)
             self.Bind(wx.EVT_MENU, self.OnTitlesDlg, id=ID_SCRIPT_TITLES)
+            self.Bind(wx.EVT_MENU, self.OnProductionModeDlg, id=ID_SCRIPT_PRODUCTION_MODE)
             self.Bind(
                 wx.EVT_MENU,
                 self.OnSpellCheckerScriptDictionaryDlg,
@@ -2126,6 +2133,7 @@ class MyFrame(wx.Frame):
             "ID_SCRIPT_HEADERS",
             "ID_SCRIPT_LOCATIONS",
             "ID_SCRIPT_PAGINATE",
+            "ID_SCRIPT_PRODUCTION_MODE",
             "ID_SCRIPT_SC_DICT",
             "ID_SCRIPT_SETTINGS",
             "ID_SCRIPT_SETTINGS_CHANGE",
@@ -2548,6 +2556,9 @@ class MyFrame(wx.Frame):
 
     def OnTitlesDlg(self, event=None):
         self.panel.ctrl.OnTitlesDlg()
+
+    def OnProductionModeDlg(self, event=None):
+        self.panel.ctrl.OnProductionModeDlg()
 
     def OnHeadersDlg(self, event=None):
         self.panel.ctrl.OnHeadersDlg()
